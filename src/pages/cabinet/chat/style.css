@@ -1,0 +1,45 @@
+.chat-list
+{
+  outline: 1px solid #000;
+  min-height: 300px;
+}
+.user-item-chat
+{
+  margin: 0 0 30px;
+}
+.chat-messages
+{
+  outline: 1px solid red;
+  width: 500px;
+}
+
+.message-item
+{
+  background-color: rgb(32, 99, 255);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 0 15px;
+  width: 40%;
+  left: 60%;
+  position: relative;
+}
+.my-message
+{
+  left: 0;
+  background-color: #ccc;
+}
+
+.chat-rooms
+{
+  background-color: #ccc;
+  padding: 15px;
+  margin: 0 0 15px;
+  cursor: pointer;
+}
+
+.chat-rooms.active
+{
+  background-color:  rgb(32, 99, 255);
+  color: #fff;
+}
