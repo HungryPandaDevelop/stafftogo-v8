@@ -30,9 +30,7 @@ const CabinetSidebar = () => {
     ['Меня пригласили', 'vacancies', 'responses'],
     ['Чат', 'vacancies', 'chat'],
     ['Видеочат', 'vacancies', 'videochat'],
-    // ['Мои реквизиты', 'requisites', 'requisites'],
-    // ['Мои отклики', 'respond', 'responses'],
-    // ['Мои кандидаты', 'candidates', 'candidates'],
+    ['Подписка', 'vacancies', 'subscription'],
     // ['Мой пакет услуг', 'packserv', 'packserv'],
     // ['Мои счета', 'score', 'score'],
     // ['История заказов', 'historyorder', 'order_history'],
@@ -45,12 +43,7 @@ const CabinetSidebar = () => {
     ['Я пригласил', 'vacancies', 'invitations'],
     ['Меня пригласили', 'vacancies', 'responses'],
     ['Чат', 'vacancies', 'chat'],
-    // ['Мои реквизиты', 'requisites', 'requisites'],
-    // ['Мои отклики', 'respond', 'responses'],
-    // ['Мои кандидаты', 'candidates', 'candidates'],
-    // ['Мой пакет услуг', 'packserv', 'packserv'],
-    // ['Мои счета', 'score', 'score'],
-    // ['История заказов', 'historyorder', 'order_history'],
+    ['Видеочат', 'vacancies', 'videochat']
   ]
 
   return (

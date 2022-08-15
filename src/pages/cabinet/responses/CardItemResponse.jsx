@@ -34,8 +34,8 @@ const CardItemResponse = ({ listing, typeCabinet }) => {
   }
 
   const tagRender = (tags) => {
-    return tags.map(el => (
-      <div
+    return tags.map((el, index) => (
+      <div key={index}
         className={`tag-invite ${el[2]} ${status === el[0] ? 'active' : ''}`}
         onClick={() => onChangeStatus(el[0])}
       >{el[1]}

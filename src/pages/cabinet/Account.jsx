@@ -61,6 +61,7 @@ const mapStateToProps = (state) => {
   console.log('state', state)
   const formReducer = state.form && state.form.singleInput;
   const fields = state.accountInfo.info.typeCabinet === 'vacancies' ? state.fieldsEmployersAccount : state.fieldsApplicantsAccount;
+
   return {
     fields: fields,
     dataForm: formReducer,
