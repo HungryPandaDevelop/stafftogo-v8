@@ -29,6 +29,7 @@ const CabinetSidebar = () => {
     ['Я пригласил', 'vacancies', 'invitations'],
     ['Меня пригласили', 'vacancies', 'responses'],
     ['Чат', 'vacancies', 'chat'],
+    ['Видеочат', 'vacancies', 'videochat'],
     // ['Мои реквизиты', 'requisites', 'requisites'],
     // ['Мои отклики', 'respond', 'responses'],
     // ['Мои кандидаты', 'candidates', 'candidates'],
