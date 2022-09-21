@@ -7,7 +7,7 @@ import 'front-end/css/style.css'
 import 'front-end/css/temporary.css'
 
 import { createStore , applyMiddleware  } from 'redux';
-// import allReducers from './reducers';
+
 import rootReducer from 'store/rootReducer';
 
 import { Provider } from 'react-redux';

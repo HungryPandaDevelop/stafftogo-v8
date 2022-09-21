@@ -27,15 +27,26 @@ const CardsList = ({ uid, cabinetType, accountInfo, ActionFn }) => {
     getListing(cabinetType, uid, 'users').then(res => {
       if (isMounted) {
         setListings(res);
+
+        if (res.length === 1) {
+          onActivateItem(res[res.length - 1].id);
+        }
+
         setLoading(false);
       }
     });
-    return () => { isMounted = false }
+
+
+
+
+    return () => { isMounted = false };
   }, []);
 
   const deleteItem = (listings, id) => {
     onDelete(listings, id, cabinetType).then(res => {
       setListings(res);
+
+      onActivateItem(res[res.length - 1].id);
     });
 
   }

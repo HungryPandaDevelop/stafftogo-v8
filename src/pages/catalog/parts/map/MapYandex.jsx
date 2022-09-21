@@ -38,7 +38,7 @@ const MapYandex = (props) => {
       setListings(res);
     })
 
-    console.log('listings', listings, props.listingType);
+
 
   }, [props.listingType]);
 
@@ -69,7 +69,7 @@ const MapYandex = (props) => {
     })
   };
 
-  console.log(listings);
+  // console.log(listings);
   return (
     <>
       <YMaps query={{ apikey: 'fdb17d90-1d93-4d15-aa02-45c372d5e0f8' }}>
@@ -94,7 +94,8 @@ const MapYandex = (props) => {
           {
             listings && listings.map((item, index) => {
               // const coords = [item.data.coords_ltd, item.data.coords_lng];
-              if (item.data.coord) {
+              // console.log('c', item.data.coords)
+              if (item.data.coords) {
                 const coords = item.data.coords.split('--');
                 const ltd = coords[1];
                 const lng = coords[2];

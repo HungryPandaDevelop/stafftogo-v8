@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const CardsInfo = ({ name, education, expFrom, expTo, priceFrom, priceTo, link, educationList }) => {
+const CardsInfo = ({ name, education, expFrom, expTo, priceFrom, priceTo, id, educationList, cabinetType }) => {
 
   const findEducation = education && educationList.filter(item => item.value === education[0]);
 
   return (
     <div className="resume-info">
       <h2>
-        <Link to={link}>
+        <Link to={`/catalog/${cabinetType}/${id}`}>
           {name}
         </Link>
       </h2>
@@ -29,6 +29,7 @@ const CardsInfo = ({ name, education, expFrom, expTo, priceFrom, priceTo, link, 
 
 const mapStateToProps = (state) => {
   return {
+    cabinetType: state.accountInfo.info.typeCabinet,
     educationList: state.fieldsResume.education.options,
   }
 }

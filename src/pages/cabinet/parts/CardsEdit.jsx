@@ -29,12 +29,12 @@ const VacanciesEdit = ({ accountInfo, cabinetType, fields, dataForm }) => {
 
   /* сохранение данных пользователя */
   const onSubmitIn = () => {
-    console.log(addUserInfo, params.elementId, cabinetType);
+    // console.log(addUserInfo, params.elementId, cabinetType);
 
     const addUserInfo = { ...dataForm.values, userInfo: getInfo };
 
     saveInfo(addUserInfo, params.elementId, cabinetType).then(() => {
-      navigate('/cabinet/' + accountInfo.typeCabinet, { replace: true });
+      navigate('/cabinet/' + cabinetType, { replace: true });
     });;
   }
 

@@ -4,7 +4,7 @@ import { getSingleListing } from 'store/asyncActions/getSingleListing';
 
 const CardItemLike = ({ like, typeCabinet }) => {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(false);
   const reverseTypeCabinet = (typeCabinet === 'vacancies') ? 'resume' : 'vacancies';
   useEffect(() => {
     if (typeCabinet === 'vacancies') {
@@ -16,11 +16,14 @@ const CardItemLike = ({ like, typeCabinet }) => {
   }, []);
 
   return (
-    <div className="cards-cabinet-item main-full">
-      <h3>
-        <Link to={`/catalog/${reverseTypeCabinet}/${like}`}>{data.card_name}</Link>
-      </h3>
-    </div>
+    <>
+      {data && (<div className="cards-cabinet-item main-full">
+        {console.log('data', data)}
+        <h3>
+          <Link to={`/catalog/${reverseTypeCabinet}/${like}`}>{data.card_name}</Link>
+        </h3>
+      </div>)}
+    </>
   )
 }
 

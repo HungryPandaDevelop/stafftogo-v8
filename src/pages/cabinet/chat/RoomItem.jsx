@@ -13,15 +13,19 @@ const RoomItem = ({ room, uid, roomId, ActionFn }) => {
   const [subName, setSubName] = useState('');
 
   useEffect(() => {
-
+    // console.log(room.data.masterId, room.data.ownId)
     getSingleListing('users', room.data.masterId).then((res) => {
       getSingleListing(res.typeCabinet, room.data.ownId).then((res) => {
-        setName(res.card_name);
+
+        res && setName(res.card_name);
       });
     });
+
     getSingleListing('users', room.data.invitedId).then((res) => {
       getSingleListing(res.typeCabinet, room.data.hisId).then((res) => {
-        setSubName(res.card_name);
+
+
+        res && setSubName(res.card_name);
       });
     });
 

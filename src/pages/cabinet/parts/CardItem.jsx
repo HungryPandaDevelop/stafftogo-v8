@@ -33,7 +33,7 @@ const ListItem = (props) => {
             priceFrom={listing.salary_priceFrom}
             priceTo={listing.salary_priceTo}
             education={listing.typeEducation}
-            link={listing.userRef}
+            id={id}
           />
         </div>
 

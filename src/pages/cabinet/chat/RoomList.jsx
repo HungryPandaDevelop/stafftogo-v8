@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { getListing } from 'store/asyncActions/getListing';
 import RoomItem from 'pages/cabinet/chat/RoomItem';
 
-import { stopSee } from 'store/asyncActions/inviteChat';
+
 
 const RoomList = ({ uid }) => {
 

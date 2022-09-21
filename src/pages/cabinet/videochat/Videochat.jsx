@@ -1,5 +1,6 @@
 
 import TemplateAccount from 'pages/cabinet/parts/TemplateAccount';
+import MainScreen from 'pages/cabinet/videochat/parts/MainScreen';
 
 
 
@@ -12,7 +13,7 @@ const Videochat = () => {
 
       <div className="main-full">
         <h2>Video chat</h2>
-
+        <MainScreen />
       </div>
     </TemplateAccount >
   )

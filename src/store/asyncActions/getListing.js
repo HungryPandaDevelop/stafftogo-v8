@@ -97,9 +97,10 @@ export const getListing = async (baseName, uid, type) => {
 export const onDelete = async (listings, listingId, name) => {
   if (window.confirm('Delete ?')) {
     await deleteDoc(doc(db, name, listingId))
-
     return  listings.filter((listing) => listing.id !== listingId)
-
+  }
+  else{
+    return listings;
   }
 }
 
