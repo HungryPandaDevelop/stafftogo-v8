@@ -7,8 +7,8 @@ const createCall = async (setRoomId, pc) => {
   const callDoc = doc(collection(db, "calls"));
   const offerCandidates = collection(callDoc, "offerCandidates");
   const answerCandidates = collection(callDoc, "answerCandidates");
+  // const videoInvite = collection(callDoc, "calls");
 
-  
   setRoomId(callDoc.id);
 
   pc.onicecandidate = (event) => {
@@ -22,6 +22,8 @@ const createCall = async (setRoomId, pc) => {
   const offer = {
     sdp: offerDescription.sdp,
     type: offerDescription.type,
+    roomId: callDoc.id,
+    invitedId: 'Ks8AALPMJ0MkLl888A9jSBr2IaC3'
   };
 
   await setDoc(callDoc, { offer });

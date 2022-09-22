@@ -1,29 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 import "./css/Video.css";
 import "./css/index.css";
 
-import Menu from "./Menu";
 import Videos from './Videos';
 
-const MainScreen = () => {
-  const [currentPage, setCurrentPage] = useState("home");
-  const [joinCode, setJoinCode] = useState("");
-
+const MainScreen = ({ typeConnect, videoroomid }) => {
+  const [currentPage, setCurrentPage] = useState('home');
+  useEffect(() => {
+    if (typeConnect === 'join') {
+      setCurrentPage('join');
+    }
+  }, []);
   return (
     <div>
+
       {currentPage === "home" ? (
-        <Menu
-          joinCode={joinCode}
-          setJoinCode={setJoinCode}
-          setPage={setCurrentPage}
-        />
+        <button onClick={() => setCurrentPage("create")}>Создать комнату</button>
       ) : (
         <Videos
-          mode={currentPage}
-          callId={joinCode}
+          mode={typeConnect}
+          callId={videoroomid}
           setPage={setCurrentPage}
+          typeConnect={typeConnect}
         />
       )}
     </div>

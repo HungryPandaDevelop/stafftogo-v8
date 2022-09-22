@@ -14,6 +14,10 @@ import Chat from 'pages/cabinet/chat/Chat';
 // import ChatList from 'pages/cabinet/chat/ChatList';
 
 import Videochat from 'pages/cabinet/videochat/Videochat';
+import VideoRoom from 'pages/cabinet/videochat/VideoRoom';
+import VideoList from 'pages/cabinet/videochat/VideoList';
+
+
 import Subscription from 'pages/cabinet/subscription/Subscription';
 
 import Authorization from 'pages/cabinet/auth/Authorization';
@@ -89,8 +93,11 @@ const App = () => {
               <Route path='/cabinet/chat/:roomUrl'  element={<Chat/>} ></Route>
 
               <Route path='/cabinet/videochat/'  element={<Videochat/>} ></Route>
+              <Route path='/cabinet/videochat/videolist'  element={<VideoList/>} ></Route>
+              <Route path='/cabinet/videochat/videoroom/:roomUrl'  element={<VideoRoom/>} ></Route>
+
               <Route path='/cabinet/subscription/'  element={<Subscription/>} ></Route>
-              {/* <Route path='/cabinet/chatlist' element={<ChatList/>} ></Route> */}
+
             </Route>
           {/*  Страницы кабинет  */}
 

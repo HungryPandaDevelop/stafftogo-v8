@@ -2,6 +2,7 @@ import { db } from 'firebase.config';
 import { collection, doc, setDoc, addDoc, getDoc, onSnapshot, updateDoc, getDocs, deleteDoc } from 'firebase/firestore';
 
 const joinCall = async (callId,pc)=>{
+  console.log('callId', callId);
   const callDoc = doc(collection(db, "calls"), callId);
   const answerCandidates = collection(callDoc, "answerCandidates");
   const offerCandidates = collection(callDoc, "offerCandidates");

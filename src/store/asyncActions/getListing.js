@@ -52,7 +52,7 @@ export const getListing = async (baseName, uid, type) => {
   else if(type==='response'){
     q = query(
       listingsRef,
-      where("invitedId", "==", uid),
+      where('invitedId', '==', uid),
       //where('idLike', '==', 'Ks8AALPMJ0MkLl888A9jSBr2IaC3'),
       // where('userRef', '==', 'YpguqFwp1YeEFrQlQeJHaRWVKar1'),
       // orderBy('timestamp', 'desc'),
@@ -62,7 +62,17 @@ export const getListing = async (baseName, uid, type) => {
   else if(type==='rooms'){
     q = query(
       listingsRef,
-      where("interlocutors", "array-contains", uid),
+      where('interlocutors', 'array-contains', uid),
+      //where('idLike', '==', 'Ks8AALPMJ0MkLl888A9jSBr2IaC3'),
+      // where('userRef', '==', 'YpguqFwp1YeEFrQlQeJHaRWVKar1'),
+      // orderBy('timestamp', 'desc'),
+      // limit(2)
+    );
+  }
+  else if(type==='videolist'){
+    q = query(
+      listingsRef,
+      where('offer.invitedId', '==', 'Ks8AALPMJ0MkLl888A9jSBr2IaC3'),
       //where('idLike', '==', 'Ks8AALPMJ0MkLl888A9jSBr2IaC3'),
       // where('userRef', '==', 'YpguqFwp1YeEFrQlQeJHaRWVKar1'),
       // orderBy('timestamp', 'desc'),

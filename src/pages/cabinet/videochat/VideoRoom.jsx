@@ -2,23 +2,22 @@
 import TemplateAccount from 'pages/cabinet/parts/TemplateAccount';
 import MainScreen from 'pages/cabinet/videochat/parts/MainScreen';
 
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 
 const Videochat = () => {
 
-
+  const params = useParams();
 
   return (
     <TemplateAccount title='Чат' >
 
       <div className="main-full">
-        <Link to='/cabinet/videochat/videoroom/123123'>Link</Link>
-        <h2>Video chat</h2>
-        <MainScreen typeConnect="create" />
+        <h2>Video ответ: {params.roomUrl}</h2>
+        <MainScreen videoroomid={params.roomUrl} typeConnect="join" />
       </div>
     </TemplateAccount >
   )
 }
 
-export default Videochat
+export default Videochat;
