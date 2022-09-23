@@ -6,7 +6,7 @@ import "./css/index.css";
 
 import Videos from './Videos';
 
-const MainScreen = ({ typeConnect, videoroomid }) => {
+const MainScreen = ({ typeConnect, videoroomid, userId }) => {
   const [currentPage, setCurrentPage] = useState('home');
   useEffect(() => {
     if (typeConnect === 'join') {
@@ -17,13 +17,14 @@ const MainScreen = ({ typeConnect, videoroomid }) => {
     <div>
 
       {currentPage === "home" ? (
-        <button onClick={() => setCurrentPage("create")}>Создать комнату</button>
+        <button onClick={() => setCurrentPage("create")}>Позвонить</button>
       ) : (
         <Videos
           mode={typeConnect}
           callId={videoroomid}
           setPage={setCurrentPage}
           typeConnect={typeConnect}
+          userId={userId}
         />
       )}
     </div>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import BtnLike from 'pages/catalog/parts/cardsItem/BtnLike';
 import BtnInvite from 'pages/catalog/parts/cardsItem/BtnInvite';
+import BtnCall from 'pages/catalog/parts/cardsItem/BtnCall';
 
 const ListItem = (props) => {
   const {
@@ -82,7 +83,7 @@ const ListItem = (props) => {
 
               </div></>
             }
-
+            <BtnCall listing={listing} />
 
 
           </div>

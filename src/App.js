@@ -93,6 +93,7 @@ const App = () => {
               <Route path='/cabinet/chat/:roomUrl'  element={<Chat/>} ></Route>
 
               <Route path='/cabinet/videochat/'  element={<Videochat/>} ></Route>
+              <Route path='/cabinet/videochat/:userId'  element={<Videochat/>} ></Route>
               <Route path='/cabinet/videochat/videolist'  element={<VideoList/>} ></Route>
               <Route path='/cabinet/videochat/videoroom/:roomUrl'  element={<VideoRoom/>} ></Route>
 

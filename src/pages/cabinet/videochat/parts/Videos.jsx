@@ -8,10 +8,9 @@ import hangUp from "./function/hangUp";
 import setupSources from "./function/setupSources";
 
 // Initialize WebRTC
+const Videos = ({ mode, callId, setPage, typeConnect, userId }) => {
 
 
-
-const Videos = ({ mode, callId, setPage, typeConnect }) => {
 
   const servers = {
     iceServers: [
@@ -74,7 +73,7 @@ const Videos = ({ mode, callId, setPage, typeConnect }) => {
               >
                 Cancel
               </button>
-              <button onClick={() => setupSources(pc, localRef, remoteRef, setWebcamActive, mode, createCall, joinCall, setRoomId, callId, hangUp, roomId, typeConnect)}>Start</button>
+              <button onClick={() => setupSources(pc, localRef, remoteRef, setWebcamActive, mode, createCall, joinCall, setRoomId, callId, hangUp, roomId, userId)}>Start</button>
             </div>
           </div>
         </div>
