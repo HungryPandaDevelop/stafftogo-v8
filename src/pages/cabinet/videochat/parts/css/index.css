@@ -139,6 +139,7 @@
     margin-right: 50px;
     background-color: #ff694f;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .videos .buttonsContainer .more {

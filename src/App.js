@@ -14,8 +14,10 @@ import Chat from 'pages/cabinet/chat/Chat';
 // import ChatList from 'pages/cabinet/chat/ChatList';
 
 import Videochat from 'pages/cabinet/videochat/Videochat';
-import VideoRoom from 'pages/cabinet/videochat/VideoRoom';
-import VideoList from 'pages/cabinet/videochat/VideoList';
+import VideoRoomIn from 'pages/cabinet/videochat/VideoRoomIn';
+import VideoRoomOut from 'pages/cabinet/videochat/VideoRoomOut';
+import VideoListIn from 'pages/cabinet/videochat/VideoListIn';
+import VideoListOut from 'pages/cabinet/videochat/VideoListOut';
 
 
 import Subscription from 'pages/cabinet/subscription/Subscription';
@@ -93,9 +95,11 @@ const App = () => {
               <Route path='/cabinet/chat/:roomUrl'  element={<Chat/>} ></Route>
 
               <Route path='/cabinet/videochat/'  element={<Videochat/>} ></Route>
-              <Route path='/cabinet/videochat/:userId'  element={<Videochat/>} ></Route>
-              <Route path='/cabinet/videochat/videolist'  element={<VideoList/>} ></Route>
-              <Route path='/cabinet/videochat/videoroom/:roomUrl'  element={<VideoRoom/>} ></Route>
+              <Route path='/cabinet/videochat/'  element={<Videochat/>} ></Route>
+              <Route path='/cabinet/videochat/videolist-in'  element={<VideoListIn/>} ></Route>
+              <Route path='/cabinet/videochat/videolist-out/'  element={<VideoListOut/>} ></Route>
+              <Route path='/cabinet/videochat/videoroom-out/:userId'  element={<VideoRoomOut/>} ></Route>
+              <Route path='/cabinet/videochat/videoroom-in/:roomUrl'  element={<VideoRoomIn/>} ></Route>
 
               <Route path='/cabinet/subscription/'  element={<Subscription/>} ></Route>
 

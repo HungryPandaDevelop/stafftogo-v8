@@ -79,6 +79,16 @@ export const getListing = async (baseName, uid, type) => {
       // limit(2)
     );
   }
+  else if(type==='videolist-my'){
+    q = query(
+      listingsRef,
+      where('offer.uid', '==', uid),
+      //where('idLike', '==', 'Ks8AALPMJ0MkLl888A9jSBr2IaC3'),
+      // where('userRef', '==', 'YpguqFwp1YeEFrQlQeJHaRWVKar1'),
+      // orderBy('timestamp', 'desc'),
+      // limit(2)
+    );
+  }
   else{
     q = query(
       listingsRef,

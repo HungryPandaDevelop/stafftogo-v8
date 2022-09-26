@@ -1,4 +1,4 @@
-const setupSources = async (pc, localRef, remoteRef, setWebcamActive, mode, createCall, joinCall, setRoomId, callId, hangUp, roomId, userId) => {
+const setupSources = async (pc, localRef, remoteRef, setWebcamActive, mode, createCall, joinCall, setRoomId, callId, hangUp, roomId, userId, uid) => {
   const localStream = await window.navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true,
@@ -22,7 +22,7 @@ const setupSources = async (pc, localRef, remoteRef, setWebcamActive, mode, crea
 
 
   if (mode === "create") {
-    createCall(setRoomId, pc, userId);
+    createCall(setRoomId, pc, userId, uid);
   }
   if (mode === "join") {
     joinCall(callId, pc);

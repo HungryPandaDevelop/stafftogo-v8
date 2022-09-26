@@ -7,7 +7,7 @@ import TemplateAccount from 'pages/cabinet/parts/TemplateAccount';
 
 
 const Liked = ({ typeCabinet, accountInfo }) => {
-  console.log(accountInfo.likeMass);
+
   const contentPage = () => {
     return (
       <>

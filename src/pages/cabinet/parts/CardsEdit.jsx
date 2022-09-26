@@ -21,6 +21,7 @@ const VacanciesEdit = ({ accountInfo, cabinetType, fields, dataForm }) => {
 
   useEffect(() => {
     getSingleListing(cabinetType, params.elementId).then(res => {
+      //console.log(res);
       setGetInfo(res);
     });
   }, []);
@@ -29,13 +30,13 @@ const VacanciesEdit = ({ accountInfo, cabinetType, fields, dataForm }) => {
 
   /* сохранение данных пользователя */
   const onSubmitIn = () => {
-    // console.log(addUserInfo, params.elementId, cabinetType);
+    console.log(dataForm.values, getInfo);
 
-    const addUserInfo = { ...dataForm.values, userInfo: getInfo };
 
-    saveInfo(addUserInfo, params.elementId, cabinetType).then(() => {
+
+    saveInfo({ ...dataForm.values }, params.elementId, cabinetType).then(() => {
       navigate('/cabinet/' + cabinetType, { replace: true });
-    });;
+    });
   }
 
   /* сохранение данных пользователя */

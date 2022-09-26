@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
 import { ReactComponent as HangupIcon } from "./icons/hangup.svg";
 
-
 import createCall from "./function/create";
 import joinCall from "./function/join";
 import hangUp from "./function/hangUp";
 import setupSources from "./function/setupSources";
 
+
 // Initialize WebRTC
-const Videos = ({ mode, callId, setPage, typeConnect, userId }) => {
+const Videos = ({ mode, callId, setPage, invitedId, uid }) => {
+
 
 
 
@@ -40,6 +41,7 @@ const Videos = ({ mode, callId, setPage, typeConnect, userId }) => {
       <div className="roomId">roomId: {roomId}
         {/* <Link to={`/roomId/${roomId}`}>{roomId}</Link> */}
       </div>
+
       <video
         ref={localRef}
         autoPlay
@@ -51,7 +53,7 @@ const Videos = ({ mode, callId, setPage, typeConnect, userId }) => {
 
       <div className="buttonsContainer">
         <button
-          onClick={hangUp}
+          onClick={() => { hangUp(pc, roomId) }}
           disabled={!webcamActive}
           className="hangup button"
         >
@@ -73,7 +75,7 @@ const Videos = ({ mode, callId, setPage, typeConnect, userId }) => {
               >
                 Cancel
               </button>
-              <button onClick={() => setupSources(pc, localRef, remoteRef, setWebcamActive, mode, createCall, joinCall, setRoomId, callId, hangUp, roomId, userId)}>Start</button>
+              <button onClick={() => setupSources(pc, localRef, remoteRef, setWebcamActive, mode, createCall, joinCall, setRoomId, callId, hangUp, roomId, invitedId, uid)}>Start</button>
             </div>
           </div>
         </div>

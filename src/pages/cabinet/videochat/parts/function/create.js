@@ -1,7 +1,7 @@
 import { db } from 'firebase.config';
 import { collection, doc, setDoc, addDoc, getDoc, onSnapshot, updateDoc, getDocs, deleteDoc } from 'firebase/firestore';
 
-const createCall = async (setRoomId, pc, userId) => {
+const createCall = async (setRoomId, pc, userId, uid) => {
   console.log('createCall');
   
   const callDoc = doc(collection(db, "calls"));
@@ -23,7 +23,8 @@ const createCall = async (setRoomId, pc, userId) => {
     sdp: offerDescription.sdp,
     type: offerDescription.type,
     roomId: callDoc.id,
-    invitedId: 'VjdbTRIiTeMmDdqk2Ln6LN4EpH22'
+    invitedId: userId,
+    uid: uid
   };
 
   await setDoc(callDoc, { offer });

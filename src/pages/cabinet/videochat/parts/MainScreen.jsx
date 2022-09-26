@@ -6,13 +6,15 @@ import "./css/index.css";
 
 import Videos from './Videos';
 
-const MainScreen = ({ typeConnect, videoroomid, userId }) => {
+const MainScreen = ({ typeConnect, videoroomid, invitedId, uid }) => {
   const [currentPage, setCurrentPage] = useState('home');
   useEffect(() => {
     if (typeConnect === 'join') {
       setCurrentPage('join');
     }
   }, []);
+
+
   return (
     <div>
 
@@ -24,7 +26,8 @@ const MainScreen = ({ typeConnect, videoroomid, userId }) => {
           callId={videoroomid}
           setPage={setCurrentPage}
           typeConnect={typeConnect}
-          userId={userId}
+          invitedId={invitedId}
+          uid={uid}
         />
       )}
     </div>

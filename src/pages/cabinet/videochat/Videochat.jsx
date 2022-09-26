@@ -17,11 +17,10 @@ const Videochat = () => {
     <TemplateAccount title='Чат' >
       {params.userId}
       <div className="main-full">
-        <h2>Video chat</h2>
-        {params.userId ? (<MainScreen typeConnect="create" userId={params.userId} />) : 'Выберете, кому хотите позвонить'}
-
+        <h2>Видеочат</h2>
       </div>
-      <Link className='btn btn--yellow' to='/cabinet/videochat/videolist'>Входящте звонки</Link>
+      <Link className='btn btn--yellow' to='/cabinet/videochat/videolist-out'>Исходящие звонки</Link>
+      <Link className='btn btn--yellow' to='/cabinet/videochat/videolist-in'>Входящте звонки</Link>
     </TemplateAccount >
   )
 }

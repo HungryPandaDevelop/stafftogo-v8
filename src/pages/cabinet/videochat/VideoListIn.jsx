@@ -43,7 +43,7 @@ const VideoList = ({ uid }) => {
       <div className="main-full">
         <h2>Video список</h2>
         {rooms ? rooms.map((item) => (
-          <Link className='btn btn--orange' key={item.offer.roomId} to={`/cabinet/videochat/videoroom/${item.offer.roomId}`}>{item.offer.roomId}</Link>
+          <Link className='btn btn--orange' key={item.offer.roomId} to={`/cabinet/videochat/videoroom-in/${item.offer.roomId}`}>{item.offer.roomId}</Link>
         )) : 'Список пуст'}
       </div>
     </TemplateAccount >
