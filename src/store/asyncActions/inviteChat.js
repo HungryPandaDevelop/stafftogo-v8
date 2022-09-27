@@ -27,6 +27,7 @@ const createRoom = async (ownId, hisId, uid, invitedId,) => {
     try {
       const sendData = {
         interlocutors: [uid, invitedId],
+        cardsConnect: [ownId, hisId],
         timestamp: serverTimestamp(),
         ownId: ownId,
         hisId: hisId,

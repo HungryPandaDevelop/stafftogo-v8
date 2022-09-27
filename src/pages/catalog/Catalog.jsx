@@ -8,17 +8,32 @@ import CardsControls from 'pages/catalog/parts/cardsControls/CardsControls';
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 
-import { getListing } from 'store/asyncActions/getListing';
+import { getListing, getListingSearch } from 'store/asyncActions/getListing';
 
 import CardsItem from 'pages/catalog/CardsItem';
 
-const Catalog = ({ listingType, uid, currentCard, cabinetType, accountInfo, roomUpdate, ActionFn }) => {
+const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, accountInfo, roomUpdate, ActionFn }) => {
 
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
 
 
   const [invited, setInvited] = useState([]);
+
+
+  useEffect(() => {
+    console.log('listingSearch', listingSearch);
+
+    getListing(listingType).then(res => {
+      const filtring = res.filter(item => {
+        if (item.data.card_name.indexOf(listingSearch) >= 0) {
+          return item;
+        }
+      });
+      setListings(filtring);
+    });
+
+  }, [listingSearch]);
 
   useEffect(() => {
 
@@ -37,8 +52,8 @@ const Catalog = ({ listingType, uid, currentCard, cabinetType, accountInfo, room
       ActionFn('UPDATE_ROOM', false);
     });
 
-
   }, [uid, roomUpdate]);
+
 
 
 
@@ -82,6 +97,7 @@ const Catalog = ({ listingType, uid, currentCard, cabinetType, accountInfo, room
 const mapStateToProps = (state) => {
   return {
     listingType: state.listingTypeReducer,
+    listingSearch: state.listingSearchReducer,
     cabinetType: state.accountInfo.info.typeCabinet,
     currentCard: state.accountInfo.info.currentCard,
     typeCabinet: state.accountInfo.info.typeCabinet,

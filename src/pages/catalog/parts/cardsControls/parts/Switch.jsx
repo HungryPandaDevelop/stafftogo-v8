@@ -2,15 +2,15 @@
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 
-const Switch = (props) => {
+const Switch = ({ listingType, ActionFn }) => {
 
   const changeTypeListing = () => {
 
-    if (props.listingType === 'resume') {
-      props.ActionFn('CHANGE_LISTING', 'vacancies');
+    if (listingType === 'resume') {
+      ActionFn('CHANGE_LISTING', 'vacancies');
     }
     else {
-      props.ActionFn('CHANGE_LISTING', 'resume');
+      ActionFn('CHANGE_LISTING', 'resume');
     }
   }
 
@@ -18,7 +18,7 @@ const Switch = (props) => {
   return (
     <>
       <div
-        className={`switch-container ${props.listingType === 'vacancies' ? 'switch-btn--active' : ''}`}
+        className={`switch-container ${listingType === 'vacancies' ? 'switch-btn--active' : ''}`}
         onClick={changeTypeListing}
       >
         <span>Резюме</span>

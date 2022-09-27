@@ -22,6 +22,7 @@ import alphabetListPopupReducer from "store/reducers/alphabetListPopupReducer";
 import popupMapInfoReducer from "store/reducers/popupMapInfoReducer";
 
 import listingTypeReducer from "store/reducers/listingTypeReducer";
+import listingSearchReducer from "store/reducers/listingSearchReducer";
 
 
 
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   alphabetListPopupReducer: alphabetListPopupReducer,
   popupMapInfoReducer: popupMapInfoReducer,
   listingTypeReducer: listingTypeReducer,
+  listingSearchReducer: listingSearchReducer,
 });
 
 export default rootReducer;

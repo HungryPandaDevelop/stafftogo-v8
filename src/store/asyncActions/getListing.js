@@ -114,7 +114,8 @@ export const getListing = async (baseName, uid, type) => {
 }
 
 
-export const onDelete = async (listings, listingId, name) => {
+
+export const onDeleteCards = async (listings, listingId, name) => {
   if (window.confirm('Delete ?')) {
     await deleteDoc(doc(db, name, listingId))
     return  listings.filter((listing) => listing.id !== listingId)
@@ -124,6 +125,28 @@ export const onDelete = async (listings, listingId, name) => {
   }
 }
 
+export const onDeleteMessage = async(id)=>{
+
+  const q = query(
+    collection(db, 'message'),
+    where('cardsConnect', 'array-contains', id),
+  )
+  const querySnap = await getDocs(q);
+
+  const getData = []
+
+  querySnap.forEach((doc) => {
+    return getData.push({
+      id: doc.id,
+      data: doc.data()
+    });
+  });
+
+  getData.map(item=>{
+    deleteDoc(doc(db, 'message', item.id));
+  });
+
+}
 
 
 
