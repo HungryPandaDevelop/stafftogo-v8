@@ -11,7 +11,7 @@ import ActionFn from 'store/actions';
 import { getListing } from 'store/asyncActions/getListing';
 
 import CardsItem from 'pages/catalog/CardsItem';
-import R from 'ramda'
+
 
 const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, accountInfo, roomUpdate, ActionFn, alphabetListPopup }) => {
 
@@ -28,36 +28,62 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
 
     getListing(listingType).then(res => {
 
+      let data = res;
+
+      if (listingSearch.name) {
+        data = data.filter(item => item.data.card_name.indexOf(listingSearch.name) >= 0);
+      }
+
+
+      const fromInput = Number(listingSearch.price_from);
+      const toInput = Number(listingSearch.price_to);
+
+      if (fromInput || toInput) {
+        data = data.filter(item => {
+          const priceEl = Number(item.data.salary_priceFrom);
+          if (fromInput && toInput) {
+            if (priceEl >= fromInput && priceEl <= toInput) {
+              return item;
+            }
+          } else if (fromInput) {
+            if (priceEl >= fromInput) {
+              return item;
+            }
+          } else if (toInput) {
+            if (priceEl <= toInput) {
+              return item;
+            }
+          }
+        });
+      }
+
+      if (alphabetListPopup.industry.length > 0) {
+
+        data = data.filter(item => {
+          if (item.data.typeJob) {
+            if (!alphabetListPopup.industry.some(ele => !item.data.typeJob.includes(ele))) {
+              return item;
+            };
+          };
+        });
+
+      }
+
+      if (alphabetListPopup.specialization.length > 0) {
+
+        data = data.filter(item => {
+          if (item.data.specialization) {
+            if (!alphabetListPopup.specialization.some(ele => !item.data.specialization.includes(ele))) {
+              return item;
+            };
+          };
+        });
+
+      }
+
+
       const filtring = res.filter(item => {
 
-        // --------text
-        // if (item.data.card_name.indexOf(listingSearch.name) >= 0) {
-        //   return item;
-        // }
-
-
-        // -------price
-        // const fromInput = Number(listingSearch.price_from);
-        // const toInput = Number(listingSearch.price_to);
-        // const priceEl = Number(item.data.salary_priceFrom);
-
-        // if (fromInput && toInput) {
-        //   if (priceEl >= fromInput && priceEl <= toInput) {
-        //     console.log('return')
-        //     return item;
-        //   }
-        // } else if (fromInput) {
-        //   if (priceEl >= fromInput) {
-        //     console.log('return')
-        //     return item;
-        //   }
-        // } else if (toInput) {
-        //   if (priceEl <= toInput) {
-        //     console.log('return')
-        //     return item;
-        //   }
-        // }
-        // -------type 1
 
 
 
@@ -94,22 +120,10 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
         //   return item;
         // }
 
-
-
-
       });
 
 
-      // test ramba delete
-      const filtrRamba = R.compose(
-        R.filter(R.where({
-          card_name: R.equals('повар')
-        }))
-      );
-      console.log('filtrRamba', filtrRamba(res))
-      // test ramba
-
-      setListings(filtring);
+      setListings(data);
     });
 
   }, [listingSearch, alphabetListPopup]);
