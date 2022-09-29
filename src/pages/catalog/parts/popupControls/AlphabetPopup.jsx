@@ -13,16 +13,17 @@ const AlphabetPopup = (props) => {
   const { id, idAction, showPopupControls } = props;
   const getBaseSorting = baseSorting(props.alphabetListBase[id + "Base"])
 
+  // console.log('alphabetListPopup', props.alphabetListPopup.industry);
+  const changeActiveList = (name, type) => {
 
-  const changeActiveList = (name) => {
-
-    if (props.alphabetListPopup[id].includes(name)) {
-      props.ActionFn('REMOVE_' + idAction, name);
+    if (props.alphabetListPopup[id].includes(type)) {
+      props.ActionFn('REMOVE_' + idAction, type);
     } else {
-      props.ActionFn('ADD_' + idAction, name);
+      props.ActionFn('ADD_' + idAction, type);
     }
 
   }
+
 
 
 
@@ -38,12 +39,12 @@ const AlphabetPopup = (props) => {
             <div className="alphabet-item" key={i}>
               <div className="alphabet-letter"><span>{item[0].name[0]}</span></div>
               <ul className="ln">
-                {item.map(({ name, count, img }, i) => (
+                {item.map(({ name, type, count, img }, i) => (
                   <li key={i}>
                     <a
                       href="/"
-                      className={(props.alphabetListPopup[id].includes(name) ? 'active' : '')}
-                      onClick={(e) => { e.preventDefault(); changeActiveList(name) }}
+                      className={(props.alphabetListPopup[id].includes(type) ? 'active' : '')}
+                      onClick={(e) => { e.preventDefault(); changeActiveList(name, type) }}
                     >
                       {img && (<>
                         <i className="employees-ico">

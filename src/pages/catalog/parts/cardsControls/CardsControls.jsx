@@ -34,7 +34,11 @@ const CardsControls = (props) => {
         </div>
         <div className="main-grid controls-line">
           <div className="btn-container vertical-align col-12" >
-            <ChoiseContentBtn industry={industry} specialization={specialization} showPopupControls={showPopupControls} />
+            <ChoiseContentBtn
+              industry={industry}
+              specialization={specialization}
+              showPopupControls={showPopupControls}
+            />
             <LeftBtnContainer />
           </div>
         </div>

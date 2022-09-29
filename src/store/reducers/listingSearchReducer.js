@@ -1,4 +1,10 @@
-const  listingSearchReducer = (state = '', action) => {
+const search = {
+  name: '', 
+  price_from: false, 
+  price_to: false,
+}
+
+const  listingSearchReducer = (state=search, action) => {
   switch(action.type){
     case 'SEARCH_NAME_LISTING':
       return {...state, name: action.payload,}

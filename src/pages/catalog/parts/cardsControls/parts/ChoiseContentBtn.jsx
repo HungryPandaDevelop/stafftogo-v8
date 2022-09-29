@@ -1,11 +1,39 @@
+import { connect } from 'react-redux';
 import BtnListControls from "./BtnListControls";
-
 import specializationBtnContent from '../js/specializationBtnContent';
 import industryBtnContent from '../js/industryBtnContent';
 
-const ChoiseContentBtn = ({ industry, specialization, showPopupControls }) => {
+const ChoiseContentBtn = ({ industry, specialization, showPopupControls, listingSearch }) => {
 
-  const listBtnMass = ['specialization', 'industry', 'Вознаграждение', 'Дополнительные фильтры'];
+  const listBtnMass = ['specialization', 'industry', 'price', 'Дополнительные фильтры'];
+
+  const setPriceText = () => {
+    if (listingSearch.price_from && !listingSearch.price_to) {
+      return (
+        <>
+          От: {listingSearch.price_from}
+        </>
+      )
+    }
+    else if (listingSearch.price_from && listingSearch.price_to) {
+      return (
+        <>
+          От: {listingSearch.price_from}
+          До: {listingSearch.price_to}
+        </>
+      )
+    }
+    else if (!listingSearch.price_from && listingSearch.price_to) {
+      return (
+        <>
+          До: {listingSearch.price_to}
+        </>
+      )
+    }
+    else {
+      return 'Вознагрождение';
+    }
+  }
 
   const innerSwitch = (item) => {
     switch (item) {
@@ -13,6 +41,8 @@ const ChoiseContentBtn = ({ industry, specialization, showPopupControls }) => {
         return specializationBtnContent(specialization)
       case 'industry':
         return industryBtnContent(industry)
+      case 'price':
+        return setPriceText();
       default:
         return item
     }
@@ -30,4 +60,12 @@ const ChoiseContentBtn = ({ industry, specialization, showPopupControls }) => {
 
 }
 
-export default ChoiseContentBtn
+
+const mapStateToProps = (state) => {
+
+  return {
+    listingSearch: state.listingSearchReducer,
+  }
+}
+
+export default connect(mapStateToProps)(ChoiseContentBtn);

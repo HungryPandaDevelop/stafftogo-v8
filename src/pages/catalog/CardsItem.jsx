@@ -50,7 +50,6 @@ const ListItem = (props) => {
             </h2>
             <div className="vacancies-price">
               {listingData.salary_priceFrom && `Р ${listingData.salary_priceFrom}`}
-              {listingData.salary_priceTo && ` - ${listingData.salary_priceTo}`}
             </div>
             <div>
               {listingData.responsibilities}

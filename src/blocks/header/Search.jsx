@@ -11,7 +11,7 @@ const Search = ({ ActionFn }) => {
     setHeadSearch(e.target.value)
   }
   const onSearch = (e) => {
-    ActionFn('SEARCH_LISTING', headSearch);
+    ActionFn('SEARCH_NAME_LISTING', headSearch);
   }
 
   return (
@@ -22,6 +22,7 @@ const Search = ({ ActionFn }) => {
           <input
             className="input-decorate"
             type="text"
+            value={headSearch}
             placeholder="Профессия, должность или компания"
             onChange={(e) => { onHeadSearch(e) }}
           />

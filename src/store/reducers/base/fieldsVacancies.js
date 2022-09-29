@@ -97,12 +97,6 @@ export default function(){
           placeholder: "От", 
           length: "col-4"
         },
-        {
-          type:"text", 
-          name: "priceTo",  
-          placeholder: "До", 
-          length: "col-4" 
-        },
         { 
           type:"select", 
           name: "priceType",  

@@ -2,26 +2,31 @@ export default function(){
   return [
   {
     name: 'Администратор',
+    type: 'spec_1',
     img: 'test',
     count: 99
   },
   {
     name: 'Аниматор',
+    type: 'spec_2',
     img: 'test',
     count: 99
   },
   {
     name: 'Зав Производством',
+    type: 'spec_3',
     img: 'test',
     count: 99
   },
   {
     name: 'Водитель',
+    type: 'spec_4',
     img: 'test',
     count: 99
   },
   {
     name: 'Горничная',
+    type: 'spec_5',
     img: 'test',
     count: 99
   },

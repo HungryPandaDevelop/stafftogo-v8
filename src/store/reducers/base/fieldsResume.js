@@ -6,6 +6,7 @@ export default function(){
       "coords",
       "salary",
       "typeJob",
+      "typeSpecialization",
       "titleTwo",
       "ageWork",
       "companyWork",
@@ -69,6 +70,17 @@ export default function(){
         {label: "Частная ферма", value:"type_21"},
       ]
     },
+    typeSpecialization: {
+      type: "list", 
+      name: "specialization", 
+      label:"Специализация сотрудника?", 
+      options:[
+        {label: "Администратор", value:"spec_1"},
+        {label: "Водитель", value:"spec_2"},
+        {label: "Горничная", value:"spec_3"},
+        {label: "Диджей", value:"spec_4"},
+      ]
+    },
     salary: { 
       type: "multy", 
       mainname: "salary", 
@@ -79,12 +91,6 @@ export default function(){
           name: "priceFrom",  
           placeholder: "От", 
           length: "col-4"
-        },
-        {
-          type:"text", 
-          name: "priceTo",  
-          placeholder: "До", 
-          length: "col-4" 
         },
         { 
           type:"select", 
