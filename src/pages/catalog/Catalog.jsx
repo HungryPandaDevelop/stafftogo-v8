@@ -23,6 +23,40 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
 
 
 
+  const findFromTo = (dataIn, fromInputIn, toInputIn, elSearch) => {
+
+    const fromInput = fromInputIn;
+    const toInput = toInputIn;
+
+    return dataIn.filter(item => {
+      const priceEl = Number(item.data[elSearch]);
+      if (fromInput && toInput) {
+        if (priceEl >= fromInput && priceEl <= toInput) {
+          return item;
+        }
+      } else if (fromInput) {
+        if (priceEl >= fromInput) {
+          return item;
+        }
+      } else if (toInput) {
+        if (priceEl <= toInput) {
+          return item;
+        }
+      }
+    });
+
+  }
+
+  const findByType = (dataIn, type1, type2) => {
+    return dataIn.filter(item => {
+      if (item.data[type1]) {
+        if (!alphabetListPopup[type2].some(ele => !item.data[type1].includes(ele))) {
+          return item;
+        };
+      };
+    });
+  }
+
 
   useEffect(() => {
 
@@ -34,93 +68,28 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
         data = data.filter(item => item.data.card_name.indexOf(listingSearch.name) >= 0);
       }
 
+      if (listingSearch.price_from || listingSearch.price_from) {
+        data = findFromTo(data, Number(listingSearch.price_from), Number(listingSearch.price_to), 'salary_priceFrom');
 
-      const fromInput = Number(listingSearch.price_from);
-      const toInput = Number(listingSearch.price_to);
-
-      if (fromInput || toInput) {
-        data = data.filter(item => {
-          const priceEl = Number(item.data.salary_priceFrom);
-          if (fromInput && toInput) {
-            if (priceEl >= fromInput && priceEl <= toInput) {
-              return item;
-            }
-          } else if (fromInput) {
-            if (priceEl >= fromInput) {
-              return item;
-            }
-          } else if (toInput) {
-            if (priceEl <= toInput) {
-              return item;
-            }
-          }
-        });
+      }
+      if (listingSearch.extra.age_from || listingSearch.extra.age_to) {
+        data = findFromTo(data, Number(listingSearch.extra.age_from), Number(listingSearch.extra.age_to), 'age');
       }
 
+      if (listingSearch.extra.exp_from || listingSearch.extra.exp_to) {
+        data = findFromTo(data, Number(listingSearch.extra.exp_from), Number(listingSearch.extra.exp_to), 'exp_work');
+      }
+
+
       if (alphabetListPopup.industry.length > 0) {
-
-        data = data.filter(item => {
-          if (item.data.typeJob) {
-            if (!alphabetListPopup.industry.some(ele => !item.data.typeJob.includes(ele))) {
-              return item;
-            };
-          };
-        });
-
+        data = findByType(data, 'typeJob', 'industry');
       }
 
       if (alphabetListPopup.specialization.length > 0) {
-
-        data = data.filter(item => {
-          if (item.data.specialization) {
-            if (!alphabetListPopup.specialization.some(ele => !item.data.specialization.includes(ele))) {
-              return item;
-            };
-          };
-        });
-
+        data = findByType(data, 'specialization', 'specialization');
       }
 
 
-      const filtring = res.filter(item => {
-
-
-
-
-        // let check = false;
-        // if (alphabetListPopup.industry.length > 0) {
-        //   console.log('in')
-        //   item.data.typeJob && alphabetListPopup.industry.forEach(el => {
-        //     if (item.data.typeJob.includes(el)) {
-        //       check = true;
-        //     } else {
-        //       check = false;
-        //       return false;
-        //     };
-        //   });
-        //   if (check) { return item; }
-        // } else {
-        //   return item;
-        // }
-
-        // -------type 2
-        // let check = false;
-        // if (alphabetListPopup.specialization.length > 0) {
-
-        //   item.data.specialization && alphabetListPopup.specialization.forEach(el => {
-        //     if (item.data.specialization.includes(el)) {
-        //       check = true;
-        //     } else {
-        //       check = false;
-        //       return false;
-        //     };
-        //   });
-        //   if (check) { return item; }
-        // } else {
-        //   return item;
-        // }
-
-      });
 
 
       setListings(data);

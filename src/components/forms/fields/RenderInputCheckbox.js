@@ -3,7 +3,7 @@ import { ReduxCheckbox, Checkboxes } from 'react-form-checkbox';
 
 
 
-const TemplateCheckbox = ({ input, label }) => (
+const TemplateCheckbox = ({ name, input, label }) => (
   <div className="checkbox">
     <label>
       {label}

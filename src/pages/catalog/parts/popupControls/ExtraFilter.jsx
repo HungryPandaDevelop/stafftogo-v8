@@ -1,86 +1,50 @@
 import CloseBtn from './CloseBtn';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import ActionFn from 'store/actions';
 
-const ExtraFilterContent = ({ showPopupControls }) => {
+import RenderFormAccount from 'components/forms/RenderFormAccount';
+
+const ExtraFilterContent = ({ showPopupControls, fields, dataForm, extraData, ActionFn }) => {
+
+
+
+  const onSubmitIn = () => {
+    console.log(dataForm.values);
+
+    ActionFn('SEARCH_EXTRA_TO_LISTING', dataForm.values)
+
+
+  }
+
 
   return (
     <div className="map-popup">
       <div className="map-popup-container filters-container">
         <CloseBtn showPopupControls={showPopupControls} />
-        <div className="filters-container main-grid">
-          <div className="col-6">
-            <div className="popup-line">
-              <h3>Пол</h3>
-              <div className="checkbox">
-                <label>Женский
-                  <input type="checkbox" />
-                  <span></span>
-                </label>
-              </div>
-              <div className="checkbox">
-                <label>Мужской
-                  <input type="checkbox" />
-                  <span></span>
-                </label>
-              </div>
-            </div>
-            <div className="popup-line">
-              <h3>Возраст</h3>
-              <div className="main-grid input-container">
-                <input className="input-decorate col-6" type="text" placeholder="От" />
-                <input className="input-decorate col-6" type="text" placeholder="До" />
-              </div>
-            </div>
-            <div className="popup-line">
-              <h3>Опыт работы</h3>
-              <div className="main-grid input-container">
-                <input className="input-decorate col-6" type="text" placeholder="От" />
-                <input className="input-decorate col-6" type="text" placeholder="До" />
-              </div>
-            </div>
-          </div>
-          <div className="checkbox-col col-6">
-            <div className="checkbox">
-              <label> Есть ИП/Самозанятый
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="checkbox">
-              <label> Медицинская книжка
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="checkbox">
-              <label> Готовность к командировкам
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="checkbox">
-              <label> Готовность работать ночью
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="checkbox">
-              <label> Срочный выезд
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="checkbox">
-              <label> Разрешение на работу в России
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="checkbox">
-              <label> Гражданство РФ
-                <input type="checkbox" /><span></span>
-              </label>
-            </div>
-            <div className="btn-container"> <a className="btn btn--orange" href="#">Сбросить фильтры</a></div>
-          </div>
-        </div >
+        <RenderFormAccount
+          btnSaveText="Сохранить изменения"
+          objFields={fields}
+          orderFields={fields.order}
+          initialValues={extraData}
+          onSubmitProps={onSubmitIn}
+        />
       </div>
     </div>
   )
 }
 
 
-export default ExtraFilterContent;
+const mapStateToProps = (state) => {
+  const formReducer = state.form && state.form.singleInput;
+  // console.log('state.listingSearchReducer', state.listingSearchReducer)
+  return {
+
+    fields: state.fieldsExtraFilter, // база полей
+    dataForm: formReducer,
+    extraData: state.listingSearchReducer.extra
+  }
+}
+
+
+export default connect(mapStateToProps, { ActionFn })(ExtraFilterContent);

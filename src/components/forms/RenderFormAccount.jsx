@@ -16,6 +16,8 @@ import RenderInputSwitch from './fields/RenderInputSwitch'; // поле пере
 
 import RenderInputCheckbox from './fields/RenderInputCheckbox';  // поле чекбокс множественное, не уневерсальное!
 
+import RenderInputRadio from './fields/RenderInputRadio';  // поле чекбокс множественное, не уневерсальное!
+
 import RenderInputList from './fields/RenderInputList'; // поле список множественное, не уневерсальное!
 
 import RenderInputMulty from './fields/RenderInputMulty'; // поле селект + текст
@@ -39,7 +41,7 @@ const TemplateForm = (props) => {
 
 
   const onSubmit = (formData) => {
-    console.log('save in formData', formData)
+    // console.log('save in formData', formData)
 
     onSubmitProps();
   }
@@ -103,6 +105,15 @@ const TemplateForm = (props) => {
           )
         case 'checkbox':
           return RenderInputCheckbox(obj.name, obj.label, obj.labelSecond, obj.options,);
+        case 'radio':
+          return (
+            <RenderInputRadio
+              name={obj.name}
+              label={obj.label}
+              labelSecond={obj.labelSecond}
+              options={obj.options}
+            />
+          );
         case 'list':
           return RenderInputList(obj.name, obj.label, obj.labelSecond, obj.options,);
         case 'password':

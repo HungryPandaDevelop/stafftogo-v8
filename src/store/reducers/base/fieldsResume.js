@@ -8,7 +8,8 @@ export default function(){
       "typeJob",
       "typeSpecialization",
       "titleTwo",
-      "ageWork",
+      "expWork",
+      "age",
       "companyWork",
       "titleThree",
       "education",
@@ -25,6 +26,12 @@ export default function(){
       name: "coords",  
       placeholder: "Адрес", 
       label: "Адрес"
+    },
+    age: { 
+      type:"text", 
+      name: "age",  
+      placeholder: "Возраст", 
+      label: "Возраст"
     },
     titleOne: {
       type:"title",
@@ -111,24 +118,11 @@ export default function(){
       placeholder: "Желаемая должность", 
       label:"Желаемая должность", 
     },
-    ageWork: {
-      type: "multy", 
-      mainname: "ageWork", 
-      label:"Стаж",  
-      allFields: [
-        { 
-          type:"text", 
-          name: "from", 
-          placeholder: "Начало работы", 
-          length: "col-6" 
-        },
-        { 
-          type:"text", 
-          name: "to", 
-          placeholder: "Окончание работы",
-          length: "col-6" 
-        },
-      ],
+    expWork: {
+      type:"text", 
+      name: "exp_work",  
+      placeholder: "Стаж работы", 
+      label:"Стаж работы", 
     },
     companyWork: {
       type: "multy", 

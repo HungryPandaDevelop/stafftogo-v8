@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import LeftBtnContainer from "./parts/LeftBtnContainer";
+import RightBtnContainer from "./parts/RightBtnContainer";
 
 import Switch from "./parts/Switch";
 import Nav from "./parts/Nav";
@@ -39,7 +39,7 @@ const CardsControls = (props) => {
               specialization={specialization}
               showPopupControls={showPopupControls}
             />
-            <LeftBtnContainer />
+            <RightBtnContainer />
           </div>
         </div>
       </div>

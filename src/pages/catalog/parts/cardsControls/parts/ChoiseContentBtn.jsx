@@ -2,38 +2,12 @@ import { connect } from 'react-redux';
 import BtnListControls from "./BtnListControls";
 import specializationBtnContent from '../js/specializationBtnContent';
 import industryBtnContent from '../js/industryBtnContent';
+import setPriceText from '../js/setPriceText';
 
 const ChoiseContentBtn = ({ industry, specialization, showPopupControls, listingSearch }) => {
 
   const listBtnMass = ['specialization', 'industry', 'price', 'Дополнительные фильтры'];
 
-  const setPriceText = () => {
-    if (listingSearch.price_from && !listingSearch.price_to) {
-      return (
-        <>
-          От: {listingSearch.price_from}
-        </>
-      )
-    }
-    else if (listingSearch.price_from && listingSearch.price_to) {
-      return (
-        <>
-          От: {listingSearch.price_from}
-          До: {listingSearch.price_to}
-        </>
-      )
-    }
-    else if (!listingSearch.price_from && listingSearch.price_to) {
-      return (
-        <>
-          До: {listingSearch.price_to}
-        </>
-      )
-    }
-    else {
-      return 'Вознагрождение';
-    }
-  }
 
   const innerSwitch = (item) => {
     switch (item) {
@@ -42,7 +16,7 @@ const ChoiseContentBtn = ({ industry, specialization, showPopupControls, listing
       case 'industry':
         return industryBtnContent(industry)
       case 'price':
-        return setPriceText();
+        return setPriceText(listingSearch);
       default:
         return item
     }

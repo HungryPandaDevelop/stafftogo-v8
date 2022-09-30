@@ -2,6 +2,7 @@ const search = {
   name: '', 
   price_from: false, 
   price_to: false,
+  extra:{}
 }
 
 const  listingSearchReducer = (state=search, action) => {
@@ -12,6 +13,8 @@ const  listingSearchReducer = (state=search, action) => {
       return {...state, price_from: action.payload,}
     case 'SEARCH_PRICE_TO_LISTING':
       return {...state, price_to: action.payload,}
+    case 'SEARCH_EXTRA_TO_LISTING':
+      return {...state, extra: action.payload,}
     default:
       return state;
   }

@@ -11,6 +11,7 @@
     "moment": "^2.29.4",
     "ramda": "^0.28.0",
     "react": "^17.0.2",
+    "react-custom-radio-checkbox": "^1.0.2",
     "react-dom": "^17.0.2",
     "react-form-checkbox": "^0.2.0",
     "react-moment": "^1.1.2",
