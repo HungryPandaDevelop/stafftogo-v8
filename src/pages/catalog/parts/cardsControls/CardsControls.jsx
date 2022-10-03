@@ -10,11 +10,11 @@ import VisiblePopup from "./parts/VisiblePopup";
 
 import ChoiseContentBtn from "./parts/ChoiseContentBtn";
 
-const CardsControls = (props) => {
+const CardsControls = ({ listingSearch }) => {
 
 
-  const industry = props.alphabetListActive.industry;
-  const specialization = props.alphabetListActive.specialization;
+  const industry = listingSearch.industry;
+  const specialization = listingSearch.specialization;
 
   const [idVisiblePopup, setIdVisiblePopup] = useState(0);
 
@@ -52,7 +52,7 @@ const CardsControls = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    alphabetListActive: state.alphabetListPopupReducer
+    listingSearch: state.listingSearchReducer
   }
 }
 

@@ -8,20 +8,14 @@ export default function(){
       "titleTwo",
       "exp_from",
       "exp_to",
-      "boss",
-      "med_book",
-      "travel",
-      "work_night",
-      "rush",
-      "permission",
-      "citizenship",
+      "additional",
     ],
-
     gender: {
       type:"radio",
       name: "gender", 
       label: "Пол", 
       options: [
+        {label:'Не имеет значения', value: "no" },
         {label:'Женщина', value: "women" },
         {label:'Мужчина', value: "men" },
       ]
@@ -57,9 +51,9 @@ export default function(){
       name: "exp_to", 
       placeholder: "До", 
     },
-    boss: { 
+    additional: { 
       type:"checkbox",
-      name: "extra_field", 
+      name: "additional", 
       label: "", 
       options: [
         { label: 'Есть ИП/Самозанятый', value: 'type_1' },
@@ -68,8 +62,7 @@ export default function(){
         { label: 'Готовность работать ночью', value: 'type_4' },
         { label: 'Срочный выезд', value: 'type_5' },
         { label: 'Разрешение на работу в России', value: 'type_6' },
-        { label: 'Разрешение на работу в России', value: 'type_7' },
-        { label: 'Гражданство РФ', value: 'type_8' },
+        { label: 'Гражданство РФ', value: 'type_7' },
       ]
     },
   }

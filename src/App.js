@@ -110,12 +110,6 @@ const App = () => {
         
 
 
-{/*  Страницы временные  */}
-          {/* <Route path='/catalog' element={<Catalog/>}></Route> */}
-          {/* <Route path='/catalog/:catagoryName' element={<ListOld/>}></Route> */}
-          {/* <Route path='/catalog/:catagoryName/:elementId' element={<Detail/>}></Route> */}
-{/*  Страницы временные  */}
-
 
           <Route path='/catalog' element={<Catalog/>}></Route>
           <Route path='/map' element={<Map/>}></Route>

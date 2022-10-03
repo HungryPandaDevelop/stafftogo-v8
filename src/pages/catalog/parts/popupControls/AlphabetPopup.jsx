@@ -22,6 +22,9 @@ const AlphabetPopup = (props) => {
       props.ActionFn('ADD_' + idAction, type);
     }
 
+    // console.log('cl', props.alphabetListPopup.industry)
+
+
   }
 
 
@@ -71,7 +74,7 @@ const mapStateToProps = (state) => {
 
   return {
     alphabetListBase: state,
-    alphabetListPopup: state.alphabetListPopupReducer
+    alphabetListPopup: state.listingSearchReducer
   }
 }
 

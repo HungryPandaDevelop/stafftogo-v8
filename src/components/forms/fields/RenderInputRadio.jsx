@@ -10,11 +10,11 @@ const TemplateInputRadio = ({ name, label, labelSecond, options, input }) => {
         <div className='checkbox' key={item.value}>
           <label>{item.label}
             <input
-              name={name}
               {...input}
+              name={name}
               value={item.value}
               type="radio"
-
+              checked={input.value === item.value ? 'checked' : ''}
             />
             <span></span>
           </label>

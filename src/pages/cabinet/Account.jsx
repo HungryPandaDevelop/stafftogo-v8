@@ -38,7 +38,7 @@ const Account = ({
   return (
     <>
 
-      {/* {console.log('fieldsAccount', fieldsAccount)} */}
+      {console.log('userInfo', userInfo)}
       <TemplateAccount title="Учетная запись компании" >
 
         {checkingStatus ? 'Loading account...' : (
@@ -58,7 +58,7 @@ const Account = ({
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state)
+
   const formReducer = state.form && state.form.singleInput;
   const fields = state.accountInfo.info.typeCabinet === 'vacancies' ? state.fieldsEmployersAccount : state.fieldsApplicantsAccount;
 

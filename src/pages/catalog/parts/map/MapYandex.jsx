@@ -13,7 +13,7 @@ import ActionFn from 'store/actions';
 
 const MapYandex = (props) => {
 
-
+  console.log('render map')
 
   // resume, vacancies
   const [listings, setListings] = useState(null);
@@ -40,14 +40,14 @@ const MapYandex = (props) => {
 
 
 
-  }, [props.listingType]);
+  }, [props.listingType, props.idShow]);
 
 
 
   const showPopup = (index, idpopup, coords) => {
 
     props.setPointA(coords)
-
+    console.log('get coords')
     props.ActionFn('SHOW_POPUP', Number(idpopup));
     props.ActionFn('POPUP_INFO', listings[index]);
 
@@ -56,6 +56,7 @@ const MapYandex = (props) => {
 
   const loadMap = (y) => {
     props.setYmaps(y);
+
     getPointB();
   }
 
@@ -63,6 +64,7 @@ const MapYandex = (props) => {
     if (!('geolocation' in navigator)) {
       return alert('Your browser not suported goelocation')
     }
+    console.log('navigator')
     navigator.geolocation.getCurrentPosition((position) => {
       const pos = [position.coords.latitude, position.coords.longitude]
       props.setPointB(pos)
@@ -125,6 +127,7 @@ const MapYandex = (props) => {
 const mapStateToProps = (state) => {
 
   return {
+    idShow: state.popupReducer.idShow,
     listingType: state.listingTypeReducer
   }
 }

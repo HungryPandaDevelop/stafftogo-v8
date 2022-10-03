@@ -9,6 +9,8 @@ const ClientPopup = (props) => {
 
   const closePopup = () => {
     props.ActionFn('SHOW_POPUP', {});
+    console.log('close');
+    props.removeRoute();
   }
 
   const imgCompany = props.getInfo.data && props.getInfo.data.userInfo.imgsAccount;

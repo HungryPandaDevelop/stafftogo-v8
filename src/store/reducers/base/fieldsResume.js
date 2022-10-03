@@ -5,11 +5,9 @@ export default function(){
       "card_name",
       "coords",
       "salary",
-      "typeJob",
+      "industry",
       "typeSpecialization",
       "titleTwo",
-      "expWork",
-      "age",
       "companyWork",
       "titleThree",
       "education",
@@ -19,19 +17,13 @@ export default function(){
       "employment",
       "work_time",
       "car_exp",
-      "trip"
+      "additional",
     ],
     coords: { 
       type:"coords", 
       name: "coords",  
       placeholder: "Адрес", 
       label: "Адрес"
-    },
-    age: { 
-      type:"text", 
-      name: "age",  
-      placeholder: "Возраст", 
-      label: "Возраст"
     },
     titleOne: {
       type:"title",
@@ -49,9 +41,9 @@ export default function(){
       type:"title",
       label:"Дополнительно", 
     },
-    typeJob: {
+    industry: {
       type: "list", 
-      name: "typeJob", 
+      name: "industry", 
       label:"В какой сфере вы хотите работать?", 
       options:[
         {label: "Бар", value:"type_1"},
@@ -117,12 +109,6 @@ export default function(){
       name: "card_name",  
       placeholder: "Желаемая должность", 
       label:"Желаемая должность", 
-    },
-    expWork: {
-      type:"text", 
-      name: "exp_work",  
-      placeholder: "Стаж работы", 
-      label:"Стаж работы", 
     },
     companyWork: {
       type: "multy", 
@@ -239,14 +225,18 @@ export default function(){
         {name: "E", value:"type_5"},
       ]
     },    
-    trip: {
-      type:"switch",
-      name: "trip", 
-      label: "Командировки, переезд", 
+    additional: {
+      type:"checkbox", 
+      name: "additional",
       options: [
-        {name:"Готов",value:"on"},
-        {name:"Не готов", value:"off"},
-      ],
+        { label: 'Есть ИП/Самозанятый', value: 'type_1' },
+        { label: 'Медицинская книжка', value: 'type_2' },
+        { label: 'Готовность к командировкам', value: 'type_3' },
+        { label: 'Готовность работать ночью', value: 'type_4' },
+        { label: 'Срочный выезд', value: 'type_5' },
+        { label: 'Разрешение на работу в России', value: 'type_6' },
+        { label: 'Гражданство РФ', value: 'type_6' },
+      ] 
     },
   }
 }

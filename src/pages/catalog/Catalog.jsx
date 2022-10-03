@@ -13,7 +13,7 @@ import { getListing } from 'store/asyncActions/getListing';
 import CardsItem from 'pages/catalog/CardsItem';
 
 
-const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, accountInfo, roomUpdate, ActionFn, alphabetListPopup }) => {
+const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, accountInfo, roomUpdate, ActionFn }) => {
 
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,14 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
     const toInput = toInputIn;
 
     return dataIn.filter(item => {
-      const priceEl = Number(item.data[elSearch]);
+      let priceEl;
+      if (elSearch === 'age' || elSearch === 'exp_work') {
+        priceEl = Number(item.data.userInfo[elSearch]);
+      } else {
+        priceEl = Number(item.data[elSearch]);
+      }
+
+
       if (fromInput && toInput) {
         if (priceEl >= fromInput && priceEl <= toInput) {
           return item;
@@ -48,9 +55,13 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
   }
 
   const findByType = (dataIn, type1, type2) => {
+
     return dataIn.filter(item => {
+
       if (item.data[type1]) {
-        if (!alphabetListPopup[type2].some(ele => !item.data[type1].includes(ele))) {
+        console.log(listingSearch.additional, item.data[type1]);
+        if (!listingSearch[type2].some(ele => !item.data[type1].includes(ele))) {
+          console.log('in')
           return item;
         };
       };
@@ -68,26 +79,42 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
         data = data.filter(item => item.data.card_name.indexOf(listingSearch.name) >= 0);
       }
 
-      if (listingSearch.price_from || listingSearch.price_from) {
+      if (listingSearch.price_from || listingSearch.price_to) {
+
         data = findFromTo(data, Number(listingSearch.price_from), Number(listingSearch.price_to), 'salary_priceFrom');
 
       }
-      if (listingSearch.extra.age_from || listingSearch.extra.age_to) {
-        data = findFromTo(data, Number(listingSearch.extra.age_from), Number(listingSearch.extra.age_to), 'age');
+
+      if (listingSearch.age_from || listingSearch.age_to) {
+        data = findFromTo(data, Number(listingSearch.age_from), Number(listingSearch.age_to), 'age');
       }
 
-      if (listingSearch.extra.exp_from || listingSearch.extra.exp_to) {
-        data = findFromTo(data, Number(listingSearch.extra.exp_from), Number(listingSearch.extra.exp_to), 'exp_work');
+      if (listingSearch.exp_from || listingSearch.exp_to) {
+        data = findFromTo(data, Number(listingSearch.userInfo.exp_from), Number(listingSearch.userInfo.exp_to), 'exp_work');
       }
 
 
-      if (alphabetListPopup.industry.length > 0) {
-        data = findByType(data, 'typeJob', 'industry');
+      if (listingSearch.industry.length > 0) {
+
+        data = findByType(data, 'industry', 'industry');
       }
 
-      if (alphabetListPopup.specialization.length > 0) {
+      if (listingSearch.specialization.length > 0) {
         data = findByType(data, 'specialization', 'specialization');
       }
+
+
+      if (listingSearch.gender && listingSearch.gender != 'no') {
+        data = res.filter(item => listingSearch.gender === item.data.userInfo.gender);
+      }
+
+
+
+      if (listingSearch.additional.length > 0) {
+
+        data = findByType(data, 'additional', 'additional');
+      }
+
 
 
 
@@ -95,7 +122,7 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
       setListings(data);
     });
 
-  }, [listingSearch, alphabetListPopup]);
+  }, [listingSearch]);
 
   useEffect(() => {
 
@@ -166,7 +193,6 @@ const mapStateToProps = (state) => {
     roomUpdate: state.accountInfo.roomUpdate,
     uid: state.accountInfo.info.uid,
     accountInfo: state.accountInfo.info,
-    alphabetListPopup: state.alphabetListPopupReducer
   }
 }
 

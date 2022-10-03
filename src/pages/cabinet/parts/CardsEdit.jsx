@@ -21,7 +21,7 @@ const VacanciesEdit = ({ accountInfo, cabinetType, fields, dataForm }) => {
 
   useEffect(() => {
     getSingleListing(cabinetType, params.elementId).then(res => {
-      //console.log(res);
+      console.log('setGetInfo', accountInfo);
       setGetInfo(res);
     });
   }, []);
@@ -34,7 +34,7 @@ const VacanciesEdit = ({ accountInfo, cabinetType, fields, dataForm }) => {
 
 
 
-    saveInfo({ ...dataForm.values }, params.elementId, cabinetType).then(() => {
+    saveInfo({ ...dataForm.values, userInfo: accountInfo }, params.elementId, cabinetType).then(() => {
       navigate('/cabinet/' + cabinetType, { replace: true });
     });
   }
@@ -67,6 +67,7 @@ const mapStateToProps = (state) => {
   const fields = state.accountInfo.info.typeCabinet === 'vacancies' ? state.fieldsVacancies : state.fieldsResume;
   return {
     uid: state.accountInfo.info.uid,
+    accountInfo: state.accountInfo.info,
     cabinetType: state.accountInfo.info.typeCabinet,
     fields: fields, // база полей
     dataForm: formReducer,

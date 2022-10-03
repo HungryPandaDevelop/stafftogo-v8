@@ -1,5 +1,5 @@
 
-const  popupReducer = (state = {idInvite: 0, openInvitePopup:0, changeInvite: false, choiseDeleteInvite: false}, action) => {
+const  popupReducer = (state = {idInvite: 0, openInvitePopup:0, changeInvite: false, choiseDeleteInvite: false, idShow:0}, action) => {
 
   switch(action.type){
     case 'SHOW_POPUP':

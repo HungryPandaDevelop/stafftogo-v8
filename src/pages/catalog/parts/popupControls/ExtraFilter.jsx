@@ -10,8 +10,7 @@ const ExtraFilterContent = ({ showPopupControls, fields, dataForm, extraData, Ac
 
 
   const onSubmitIn = () => {
-    console.log(dataForm.values);
-
+    // console.log(dataForm.values);
     ActionFn('SEARCH_EXTRA_TO_LISTING', dataForm.values)
 
 

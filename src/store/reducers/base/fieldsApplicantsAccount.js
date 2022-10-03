@@ -8,8 +8,10 @@ export default function(){
       "phone",
       "statusInSite",
       "imgsAccount",
+      "gender",
       "fio",
       "age",
+      "exp_work",
       "country",
     ],
     typeCabinet: {
@@ -26,6 +28,22 @@ export default function(){
       name: "name", 
       label: "Имя пользователя", 
       placeholder: "Имя пользователя", 
+      
+    },
+    gender: {
+      type:"radio",
+      name: "gender", 
+      label: "Пол", 
+      options: [
+        {label:'Женщина', value: "women" },
+        {label:'Мужчина', value: "men" },
+      ]
+    },
+    exp_work: { 
+      type:"text" ,
+      name: "exp_work", 
+      label: "Общий стаж работы", 
+      placeholder: "Общий стаж работы", 
       
     },
     email: { 

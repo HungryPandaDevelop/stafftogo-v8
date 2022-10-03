@@ -20,12 +20,11 @@ const MapGo = (props) => {
   const map = useRef(null)
 
   const [ymaps, setYmaps] = useState(null);
-
+  const [tempRoute, setTempRoute] = useState(null);
   const setRouteFirst = () => {
     addRoute(pointA, pointB, 0);
   }
   const setRouteByChangeType = (index) => {
-    console.log('setRouteByChangeType', index);
     addRoute(pointA, pointB, index);
   }
 
@@ -43,25 +42,14 @@ const MapGo = (props) => {
       },
       { boundsAutoApply: true }
     )
-
-    map.current.geoObjects.removeAll(multiRoute)
-    map.current.geoObjects.add(multiRoute)
+    setTempRoute(multiRoute)
+    map.current.geoObjects.removeAll(multiRoute);
+    map.current.geoObjects.add(multiRoute);
   };
 
-
-  // const visiblePopup = (el) => {
-  //   switch (el) {
-  //     case 1:
-  //       return <AlphabetPopup id="specialization" idAction="SPECIALIZATION" />
-  //     case 2:
-  //       return <AlphabetPopup id="industry" idAction="INDUSTRY" />
-  //     case 3:
-  //       return <RewardPopup />
-  //     case 4:
-  //       return <ExtraFilter />
-  //   }
-  // }
-
+  const removeRoute = () => {
+    map.current.geoObjects.removeAll();
+  }
 
 
   return (
@@ -85,7 +73,7 @@ const MapGo = (props) => {
                 setRouteFirst={setRouteFirst}
                 setRouteByChangeType={setRouteByChangeType}
               />
-              <ClientPopup />
+              <ClientPopup removeRoute={removeRoute} />
             </>
           ) : ''}
 

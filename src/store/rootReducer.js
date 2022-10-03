@@ -18,7 +18,7 @@ import industryBase from "store/reducers/base/industryBase";
 import infoAccountReducer from "store/reducers/infoAccountReducer";
 
 import popupReducer from "store/reducers/popupReducer";
-import alphabetListPopupReducer from "store/reducers/alphabetListPopupReducer";
+// import alphabetListPopupReducer from "store/reducers/alphabetListPopupReducer";
 
 import popupMapInfoReducer from "store/reducers/popupMapInfoReducer";
 
@@ -41,7 +41,7 @@ const rootReducer = combineReducers({
   specializationBase: specializationBase,
   industryBase: industryBase,
   popupReducer: popupReducer,
-  alphabetListPopupReducer: alphabetListPopupReducer,
+  // alphabetListPopupReducer: alphabetListPopupReducer,
   popupMapInfoReducer: popupMapInfoReducer,
   listingTypeReducer: listingTypeReducer,
   listingSearchReducer: listingSearchReducer,
