@@ -1,18 +1,29 @@
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';
 
+import removeRoute from 'pages/goMap/js/removeRoute';
+
 import { useEffect, useState } from 'react';
 
 import { getSingleListing } from 'store/asyncActions/getSingleListing'
 
-const CardsPopup = ({ listingType, currentCardId }) => {
+const CardsPopup = (
+  {
+    listingType,
+    currentCardId,
+    myMapRef,
+    myRoute,
+    setRouteboxState,
+    setCurrentCardId
+  }) => {
 
   const [cardInfo, setCardInfo] = useState(null);
 
   useEffect(() => {
     if (currentCardId) {
       getSingleListing(listingType, currentCardId).then(res => {
-        setCardInfo(res)
+        setCardInfo(res);
+
         // console.log(res)
       });
     }
@@ -20,6 +31,9 @@ const CardsPopup = ({ listingType, currentCardId }) => {
 
   const closePopup = () => {
     setCardInfo(null);
+    setRouteboxState(null);
+    setCurrentCardId(null);
+    removeRoute(myMapRef, myRoute);
   }
 
 

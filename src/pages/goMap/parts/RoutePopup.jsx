@@ -7,22 +7,31 @@ const RoutePopup = (
   {
     myMap,
     myMapRef,
+    myRoute,
+    setMyRoute,
     currentCardId,
     myPosition,
-    choiseMarkerPosition
+    choiseMarkerPosition,
+    myPositionText,
+    markerPositionText,
+    routeboxState,
+    setRouteboxState
   }) => {
 
+  // console.log('markerPositionText', markerPositionText)
 
   const routeChecknox = ['auto', 'masstransit', 'pedestrian'];
   const routeChecknoxTemp = ['car', 'bus', 'walk']; // ПОСЛЕ ВЕРСТКИ ПОМЕНЯТЬ
   const [routeCheckboxType, setRouteCheckboxType] = useState(0)
-  const [routeboxState, setRouteboxState] = useState(false);
 
-  const [myRoute, setMyRoute] = useState(null);
+
+
 
   const showRoutebox = () => {
-    console.log('set route', myPosition, choiseMarkerPosition);
-    addRoute(myMap, myMapRef, setMyRoute, myPosition, choiseMarkerPosition, 'bus');
+    console.log('set route', myRoute);
+    removeRoute(myMapRef, myRoute);
+    addRoute(myMap, myMapRef, setMyRoute, myPosition, choiseMarkerPosition, 'auto');
+
     setRouteboxState(!routeboxState); // состояние плашки маршрту
     // setRouteFirst(); // построить маршрут
   }
@@ -30,7 +39,8 @@ const RoutePopup = (
 
   const changeInTypeRoute = (index) => {
     // тип маршрута
-    console.log(index)
+    // console.log(index)
+    console.log('myRoute', myRoute);
     removeRoute(myMapRef, myRoute);
     setRouteCheckboxType(index);
     addRoute(myMap, myMapRef, setMyRoute, myPosition, choiseMarkerPosition, routeChecknox[index]);
@@ -55,11 +65,11 @@ const RoutePopup = (
 
             <div className="from input-route-item">
               <i className="from-ico"></i><span>Откуда: </span>
-              <input className="input-decorate" type="text" disabled />
+              <input className="input-decorate" type="text" value={myPositionText} disabled />
             </div>
             <div className="to input-route-item">
               <i className="to-ico"></i><span>Куда: </span>
-              <input className="input-decorate" type="text" disabled />
+              <input className="input-decorate" type="text" value={markerPositionText} disabled />
             </div>
 
             <div className="checkbox-route">
