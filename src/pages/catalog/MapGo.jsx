@@ -1,4 +1,4 @@
-import Map from 'pages/catalog/parts/map/Map';
+import Map from 'pages/catalog/parts/mapOld/Map';
 import CardsControls from 'pages/catalog/parts/cardsControls/CardsControls';
 function MapGo() {
   return (

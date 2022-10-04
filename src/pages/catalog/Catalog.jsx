@@ -111,7 +111,6 @@ const Catalog = ({ listingType, listingSearch, uid, currentCard, cabinetType, ac
 
 
       if (listingSearch.additional.length > 0) {
-
         data = findByType(data, 'additional', 'additional');
       }
 

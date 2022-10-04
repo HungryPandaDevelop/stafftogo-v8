@@ -20,11 +20,12 @@ const MapGo = (props) => {
   const map = useRef(null)
 
   const [ymaps, setYmaps] = useState(null);
-  const [tempRoute, setTempRoute] = useState(null);
+
   const setRouteFirst = () => {
     addRoute(pointA, pointB, 0);
   }
   const setRouteByChangeType = (index) => {
+
     addRoute(pointA, pointB, index);
   }
 
@@ -42,7 +43,7 @@ const MapGo = (props) => {
       },
       { boundsAutoApply: true }
     )
-    setTempRoute(multiRoute)
+
     map.current.geoObjects.removeAll(multiRoute);
     map.current.geoObjects.add(multiRoute);
   };
@@ -56,7 +57,7 @@ const MapGo = (props) => {
     <>
       <div className="map">
         <MapYandex
-          ymaps={ymaps}
+          // ymaps={ymaps}
           setYmaps={setYmaps}
           pointA={pointA}
           pointB={pointB}

@@ -47,7 +47,7 @@ const MapYandex = (props) => {
   const showPopup = (index, idpopup, coords) => {
 
     props.setPointA(coords)
-    console.log('get coords')
+
     props.ActionFn('SHOW_POPUP', Number(idpopup));
     props.ActionFn('POPUP_INFO', listings[index]);
 
@@ -64,7 +64,7 @@ const MapYandex = (props) => {
     if (!('geolocation' in navigator)) {
       return alert('Your browser not suported goelocation')
     }
-    console.log('navigator')
+
     navigator.geolocation.getCurrentPosition((position) => {
       const pos = [position.coords.latitude, position.coords.longitude]
       props.setPointB(pos)
@@ -95,8 +95,6 @@ const MapYandex = (props) => {
           { }
           {
             listings && listings.map((item, index) => {
-              // const coords = [item.data.coords_ltd, item.data.coords_lng];
-              // console.log('c', item.data.coords)
               if (item.data.coords) {
                 const coords = item.data.coords.split('--');
                 const ltd = coords[1];

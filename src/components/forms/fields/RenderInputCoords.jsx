@@ -59,6 +59,7 @@ const TemplateCoords = (props) => {
         type="text"
         className="input-decorate"
         onChange={checkEpmty}
+        autoComplete="off"
       />
       <input
         type="text"
@@ -66,6 +67,7 @@ const TemplateCoords = (props) => {
         {...input}
         value={custVal}
         className="hidden-field"
+        autoComplete="off"
       />
 
 

@@ -55,7 +55,7 @@ import CardsDetail from 'pages/catalog/CardsDetail';
 
 
 
-import Map from 'pages/catalog/MapGo';
+import GoMap from 'pages/goMap/GoMap';
 
 
 const App = () => {
@@ -112,7 +112,7 @@ const App = () => {
 
 
           <Route path='/catalog' element={<Catalog/>}></Route>
-          <Route path='/map' element={<Map/>}></Route>
+          <Route path='/map' element={<GoMap/>}></Route>
           <Route path='/catalog/:catagoryName/:elementId' element={<CardsDetail/>}></Route>
 
 
