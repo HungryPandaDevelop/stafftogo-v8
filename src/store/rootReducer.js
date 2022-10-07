@@ -6,6 +6,7 @@ import {reducer as formReducer} from 'redux-form';
 import fieldsAuthorization from 'store/reducers/base/fieldsAuthorization';
 import fieldsRegistration from 'store/reducers/base/fieldsRegistration';
 import fieldsEmployersAccount from 'store/reducers/base/fieldsEmployersAccount';
+import fieldsFeedback from 'store/reducers/base/fieldsFeedback';
 import fieldsApplicantsAccount from 'store/reducers/base/fieldsApplicantsAccount';
 import fieldsVacancies from 'store/reducers/base/fieldsVacancies';
 import fieldsResume from 'store/reducers/base/fieldsResume';
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   fieldsAuthorization: fieldsAuthorization,
   fieldsRegistration: fieldsRegistration,
   fieldsEmployersAccount: fieldsEmployersAccount,
+  fieldsFeedback: fieldsFeedback,
   fieldsApplicantsAccount: fieldsApplicantsAccount,
   fieldsVacancies: fieldsVacancies,
   fieldsResume: fieldsResume,

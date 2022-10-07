@@ -1,6 +1,6 @@
 import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
 
-const ClearYaMap = ({ myMap, myMapRef }) => {
+const ClearYaMap = ({ myMap, myMapRef, setMyMap }) => {
 
   return (
     <>
@@ -21,7 +21,9 @@ const ClearYaMap = ({ myMap, myMapRef }) => {
           }
           modules={["multiRouter.MultiRoute", "Placemark", "geocode"]}
           onLoad={(y) => {
-            myMap.current = y;
+            // myMap.current = y;
+            setMyMap(y)
+            console.log('ready', y);
           }}
           instanceRef={myMapRef}
         >

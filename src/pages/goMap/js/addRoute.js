@@ -1,5 +1,5 @@
 const addRoute = (myMap, myMapRef, setMyRoute, from, to, typeRoute) => {
-  const multiRoute = new myMap.current.multiRouter.MultiRoute(
+  const multiRoute = new myMap.multiRouter.MultiRoute(
     {
       referencePoints: [from, to],
       params: {

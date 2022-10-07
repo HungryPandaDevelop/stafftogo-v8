@@ -1,6 +1,6 @@
-import AlphabetPopup from "pages/catalog/parts/popupControls/AlphabetPopup";
-import RewardPopup from "pages/catalog/parts/popupControls/RewardPopup";
-import ExtraFilter from "pages/catalog/parts/popupControls/ExtraFilter";
+import AlphabetPopup from "blocks/popupControls/AlphabetPopup";
+import RewardPopup from "blocks/popupControls/RewardPopup";
+import ExtraFilter from "blocks/popupControls/ExtraFilter";
 
 const VisiblePopup = ({ idVisible, showPopupControls }) => {
   const choisePopup = (id) => {

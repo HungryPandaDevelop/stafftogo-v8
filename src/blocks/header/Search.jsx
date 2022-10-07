@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Switch from 'pages/catalog/parts/cardsControls/parts/Switch'; //  почему тут ?
+import Switch from 'blocks/cardsControls/parts/Switch'; //  почему тут ?
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ActionFn from 'store/actions';

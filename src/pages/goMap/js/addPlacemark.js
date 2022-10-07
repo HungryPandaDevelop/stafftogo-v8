@@ -14,7 +14,7 @@ const addPlacemark = (myMap, myMapRef, coords, setOptions, itemId) => {
   // console.log(setMarkerStyle);
 
   
-  const placemark = new myMap.current.Placemark(
+  const placemark = new myMap.Placemark(
     coords, 
     {
       itemId: itemId

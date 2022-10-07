@@ -23,7 +23,7 @@ const CardsPopup = (
     if (currentCardId) {
       getSingleListing(listingType, currentCardId).then(res => {
         setCardInfo(res);
-
+        removeRoute(myMapRef, myRoute);
         // console.log(res)
       });
     }

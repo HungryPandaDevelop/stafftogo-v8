@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import RightBtnContainer from "./parts/RightBtnContainer";
+import RightBtnContainer from "blocks/cardsControls/parts/RightBtnContainer";
 
-import Switch from "./parts/Switch";
-import Nav from "./parts/Nav";
+import Switch from "blocks/cardsControls/parts/Switch";
+import Nav from "blocks/cardsControls/parts/Nav";
 import { connect } from 'react-redux';
 
 import VisiblePopup from "./parts/VisiblePopup";

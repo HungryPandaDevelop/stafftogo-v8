@@ -1,4 +1,24 @@
-function FeedbackHome() {
+
+
+import { connect } from 'react-redux';
+import RenderFormAccount from 'components/forms/RenderFormAccount';
+
+import emailjs from '@emailjs/browser';
+
+const FeedbackHome = ({ fields, dataForm }) => {
+  const onSubmitIn = () => {
+    console.log(dataForm.values);
+
+
+    emailjs.send('service_yew9khi', 'template_ld1qsqs', dataForm.values, '8uwo94j0rrU71YiK6')
+      .then((result) => {
+        console.log(result.text);
+        console.log('form send')
+      }, (error) => {
+        console.log(error.text);
+      });
+
+  }
   return (
     <>
       <section className="feedback_home">
@@ -52,39 +72,12 @@ function FeedbackHome() {
             </form>
           </div>
           <div className="col-6 feedback-container">
-            <form className="form main-grid">
-              <input className="input-decorate col-4 require" type="text" placeholder="Фамилия" />
-              <input className="input-decorate col-4 require" type="text" placeholder="Имя" />
-              <input className="input-decorate col-4 require" type="text" placeholder="Отчество" />
-              <input className="phone-mask input-decorate col-6 require" type="text" placeholder="+7 (___) ___ - __ - __" />
-              <input className="input-decorate check-mail col-6" type="email" placeholder="Email" />
-
-              {/* <select className="style-select" >
-                <option>lorem</option>
-                <option>ipusm</option>
-                <option>scientist</option>
-                <option>blog</option>
-                <option>red</option>
-              </select>
-
-              <select className="style-select" >
-                <option>lorem</option>
-                <option>ipusm</option>
-                <option>scientist</option>
-                <option>blog</option>
-                <option>red</option>
-              </select> */}
-
-              <textarea className="input-decorate col-12" placeholder="Комментарий"></textarea>
-              <div className="checkbox col-12">
-                <label>Я даю свое согласие на обработку персональных данных
-                  <input type="checkbox" /><span></span>
-                </label>
-              </div>
-              <div className="form-btn-container col-12">
-                <input className="btn btn-send btn--orangewhite" type="submit" value="Отправить" />
-              </div>
-            </form>
+            <RenderFormAccount
+              btnSaveText="Сохранить изменения"
+              objFields={fields}
+              orderFields={fields.order}
+              onSubmitProps={onSubmitIn}
+            />
           </div>
         </div>
       </section>
@@ -92,4 +85,17 @@ function FeedbackHome() {
   )
 }
 
-export default FeedbackHome
+
+
+const mapStateToProps = (state) => {
+
+  const formReducer = state.form && state.form.singleInput;
+
+  return {
+    fields: state.fieldsFeedback, // база полей
+    dataForm: formReducer,
+  }
+}
+
+
+export default connect(mapStateToProps)(FeedbackHome);
